@@ -1,0 +1,67 @@
+version: "2"
+
+services:
+  app:
+    restart: always
+    build: ./app
+    hostname: app
+    environment:
+      - TZ=Asia/Taipei
+    container_name: app
+    command: bash -c 'node index.js'
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m
+
+  nginx:
+    restart: always
+    image: nginx
+    container_name: nginx
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m
+
+  web:
+    restart: always
+    build: ./web
+    hostname: web
+    environment:
+      - TZ=Asia/Taipei
+    container_name: web
+    command: bash -c 'node server'
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m
+
+  db:  
+    image: mariadb:10.2
+    hostname: db
+    container_name: db
+    environment:
+      - TZ=Asia/Taipei      
+      - MYSQL_ROOT_PASSWORD=1qaz@WSX
+      - MYSQL_DATABASE=go-travel
+      - MYSQL_USER=go-travel
+      - MYSQL_PASSWORD=1qaz@WSX
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m
+    restart: always
+    volumes:
+      - /home/go-travel/data/db:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+networks:
+  default:
+    external:
+      name: go-travel-net
