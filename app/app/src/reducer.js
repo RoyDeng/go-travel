@@ -6,7 +6,7 @@ import common from './reducers/common';
 import editor from './reducers/editor';
 import home from './reducers/home';
 import profile from './reducers/profile';
-import settings from './reducers/settings';
+import profileEditor from './reducers/profileEditor';
 import { routerReducer } from 'react-router-redux';
 
 export default combineReducers({
@@ -17,6 +17,6 @@ export default combineReducers({
     editor,
     home,
     profile,
-    settings,
+    profileEditor,
     router: routerReducer
 });

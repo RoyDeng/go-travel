@@ -9,6 +9,7 @@ const ItemList = props => {
                     return (
                         <Item
                             item={item}
+                            currentUser={props.currentUser}
                             id={props.id}
                             key={item.id} />
                     );

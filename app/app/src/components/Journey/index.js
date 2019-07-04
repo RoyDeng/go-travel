@@ -86,6 +86,7 @@ class Journey extends React.Component {
                             items={this.props.items || []}
                             errors={this.props.commentErrors}
                             id={this.props.match.params.id}
+                            journey={this.props.journey}
                             currentUser={this.props.currentUser} />
                     </div>
                 </div>

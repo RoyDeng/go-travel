@@ -3,7 +3,7 @@ import {
     REDIRECT,
     LOGOUT,
     JOURNEY_SUBMITTED,
-    SETTINGS_SAVED,
+    PROFILE_SAVED,
     LOGIN,
     REGISTER,
     DELETE_JOURNEY,
@@ -11,14 +11,14 @@ import {
     EDITOR_PAGE_UNLOADED,
     HOME_PAGE_UNLOADED,
     PROFILE_PAGE_UNLOADED,
-    PROFILE_FAVORITES_PAGE_UNLOADED,
-    SETTINGS_PAGE_UNLOADED,
+    FAVORITE_JOURNEYS_PAGE_UNLOADED,
+    PROFILE_EDITOR_PAGE_UNLOADED,
     LOGIN_PAGE_UNLOADED,
     REGISTER_PAGE_UNLOADED
 } from '../constants/actionTypes';
 
 const defaultState = {
-    appName: 'Conduit',
+    appName: '趣旅行',
     token: null,
     viewChangeCounter: 0
 };
@@ -39,7 +39,7 @@ export default (state = defaultState, action) => {
         case JOURNEY_SUBMITTED:
             const redirectUrl = `/journey/${action.payload.journey.id}`;
             return { ...state, redirectTo: redirectUrl };
-        case SETTINGS_SAVED:
+        case PROFILE_SAVED:
             return {
                 ...state,
                 redirectTo: action.error ? null : '/',
@@ -59,8 +59,8 @@ export default (state = defaultState, action) => {
         case EDITOR_PAGE_UNLOADED:
         case HOME_PAGE_UNLOADED:
         case PROFILE_PAGE_UNLOADED:
-        case PROFILE_FAVORITES_PAGE_UNLOADED:
-        case SETTINGS_PAGE_UNLOADED:
+        case FAVORITE_JOURNEYS_PAGE_UNLOADED:
+        case PROFILE_EDITOR_PAGE_UNLOADED:
         case LOGIN_PAGE_UNLOADED:
         case REGISTER_PAGE_UNLOADED:
             return { ...state, viewChangeCounter: state.viewChangeCounter + 1 };

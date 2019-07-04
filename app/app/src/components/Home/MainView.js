@@ -4,27 +4,26 @@ import agent from '../../agent';
 import { connect } from 'react-redux';
 import { CHANGE_TAB } from '../../constants/actionTypes';
 
-const YourFeedTab = props => {
+const YourJourneyTab = props => {
     if (props.token) {
         const clickHandler = ev => {
             ev.preventDefault();
-            props.onTabClick('feed', agent.Journeys.feed, agent.Journeys.feed());
+            props.onTabClick('source', agent.Journeys.source, agent.Journeys.source());
         }
 
         return (
             <li className="nav-item">
                 <a href=""
-                    className={props.tab === 'feed' ? 'nav-link active' : 'nav-link'}
+                    className={props.tab === 'source' ? 'nav-link active' : 'nav-link'}
                     onClick={clickHandler}>
-                    Your Feed
-        </a>
+                    你的旅程</a>
             </li>
         );
     }
     return null;
 };
 
-const GlobalFeedTab = props => {
+const PublicJourneyTab = props => {
     const clickHandler = ev => {
         ev.preventDefault();
         props.onTabClick('all', agent.Journeys.all, agent.Journeys.all());
@@ -35,8 +34,7 @@ const GlobalFeedTab = props => {
                 href=""
                 className={props.tab === 'all' ? 'nav-link active' : 'nav-link'}
                 onClick={clickHandler}>
-                Global Feed
-      </a>
+                公開旅程</a>
         </li>
     );
 };
@@ -68,15 +66,15 @@ const mapDispatchToProps = dispatch => ({
 const MainView = props => {
     return (
         <div className="col-md-9">
-            <div className="feed-toggle">
+            <div className="source-toggle">
                 <ul className="nav nav-pills outline-active">
 
-                    <YourFeedTab
+                    <YourJourneyTab
                         token={props.token}
                         tab={props.tab}
                         onTabClick={props.onTabClick} />
 
-                    <GlobalFeedTab tab={props.tab} onTabClick={props.onTabClick} />
+                    <PublicJourneyTab tab={props.tab} onTabClick={props.onTabClick} />
 
                     <TagFilterTab tag={props.tag} />
 

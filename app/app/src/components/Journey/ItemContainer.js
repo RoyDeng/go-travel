@@ -5,14 +5,17 @@ import React from 'react';
 
 const ItemContainer = props => {
     if (props.currentUser) {
+        const isUser = this.props.currentUser.username === this.props.journey.author.username;
         return (
             <div className="col-xs-12 col-md-8 offset-md-2">
-                <div>
-                    <list-errors errors={props.errors}></list-errors>
-                    <ItemInput id={props.id} />
-                </div>
+                if () {
+                    <div>
+                        <list-errors errors={props.errors}></list-errors>
+                        <ItemInput isUser={isUser} id={props.id} />
+                    </div>
+                }
 
-                <CommentList
+                <ItemList
                     items={props.items}
                     id={props.id} />
             </div>
@@ -28,7 +31,8 @@ const ItemContainer = props => {
 
                 <ItemList
                     comments={props.comments}
-                    id={props.id} />
+                    id={props.id}
+                    currentUser={props.currentUser} />
             </div>
         );
     }
