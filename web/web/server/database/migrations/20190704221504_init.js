@@ -12,6 +12,7 @@ export const up = (knex, Promise) => {
             table.uuid('id').unique().primary().notNullable();
             table.string('title').notNullable();
             table.text('description').nullable();
+            table.boolean('is_private').defaultTo(false);
             table.uuid('user_id');
             table.foreign('user_id').references('id').inTable('users');
             table.timestamps();
