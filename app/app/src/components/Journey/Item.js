@@ -4,7 +4,7 @@ import React from 'react';
 const Item = props => {
     const item = props.item;
     const show = props.currentUser &&
-    props.currentUser.username === comment.author.username;
+    props.currentUser.username === item.author.username;
     return (
         <div className="card">
             <div className="card-block">

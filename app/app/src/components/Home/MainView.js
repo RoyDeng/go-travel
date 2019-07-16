@@ -1,4 +1,4 @@
-import LayerList from '../Layer/List';
+import JourneyList from '../JourneyList';
 import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
@@ -81,7 +81,7 @@ const MainView = props => {
                 </ul>
             </div>
 
-            <LayerList
+            <JourneyList
                 pager={props.pager}
                 layers={props.layers}
                 loading={props.loading}
