@@ -8,6 +8,7 @@
     "@koa/cors": "^3.0.0",
     "bcrypt": "^3.0.6",
     "bookshelf": "^0.15.1",
+    "bookshelf-cascade-delete": "^2.0.1",
     "bookshelf-uuid": "^1.0.0",
     "dotenv": "^8.0.0",
     "joi": "^14.3.1",
